@@ -1,58 +1,41 @@
-from flask import Flask, request, redirect, render_template, flash, session
+from flask import Flask, render_template, request, jsonify, redirect, url_for
 
-app = Flask(__name__)
-app.config['SECRET_KEY'] = 'secret_key'
-app.config['USERNAME'] = 'user'
-app.config['PASSWORD'] = 'pass'
+app = Flask(__name)
+
+# サンプルのユーザ名とパスワード
+sample_username = "user"
+sample_password = "password"
 
 @app.route('/')
-def index():
-    if “flag” in session and session[“flag”]:
-        return render_template('welcome.html', username=session[“username”])
-    return redirect('/login')
-
-@app.route('/login', methods=['GET'])
-def login():
-    if “flag” in session and session[“flag”]:
-        return redirect('/welcome')
+def login_page():
     return render_template('login.html')
 
 @app.route('/login', methods=['POST'])
-def login_post():
-    username = request.form[“username”]
-    password = request.form[“password”]
-    if username != app.config['USERNAME']:
-        flash('ユーザ名が異なります')
-    elif password != app.config['PASSWORD']:
-        flash('パスワードが異なります')
+def login():
+    data = request.get_json()
+    username = data.get('username')
+    password = data.get('password')
+
+    if username == sample_username and password == sample_password:
+        # ログイン成功時にindex.htmlにリダイレクト
+        return redirect(url_for('index'))
     else:
-        session[“flag”] = True
-        session[“username”] = username
-    if session[“flag”]:
-        return render_template('welcome.html', username=session[“username”])
-    else:
-        return redirect('/login')
+        response = {"message": "failure"}
+        return jsonify(response)
 
-@app.route('/welcome')
-def welcome():
-    if “flag” in session and session[“flag”]:
-        return render_template('welcome.html', username=session[“username”])
-    return redirect('/login')
+@app.route('/index')
+def index():
+    # index.html ページの表示
+    return render_template('index.html')
 
-@app.route('/contents')
-def contents():
-    if “flag” in session and session[“flag”]:
-        return render_template('index.html', username=session["username"])
-    return redirect('/login')
-
-@app.route('/logout')
-def logout():
-    session.pop('username', None)
-    session.pop("flag", None)
-    session["username"] = None
-    session["flag"] = False
-    flash('ログアウトしました')
-    return redirect("/login")
+@app.route('/post-comment', methods=['POST'])
+def post_comment():
+    data = request.get_json()
+    comment_text = data.get('comment')
+    # コメントを保存するためのコード
+    # 保存が成功した場合は {"success": true} を返す
+    response = {"success": True}
+    return jsonify(response)
 
 if __name__ == '__main__':
-  app.run(debug=True)
+    app.run(debug=True)

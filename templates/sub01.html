@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>試合結果</title>
+</head>
+<body>
+    <h1>第０節 [クラブ名]戦</h1>
+    <h2>Latest Match Result</h2>
+    <p>Date: 2023-00-00</p>
+    <p> アーセナル 2 - 1 [クラブ名]</p>
+    <h2>コメント</h2>
+    <ul id="comments">
+        <!-- コメント表示 -->
+    </ul>
+    <h3>コメントを書く</h3>
+    <form id="comment-form">
+        <label for="comment">Comment:</label>
+        <input type="text" name="comment" id="comment" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+      commentForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const commentInput = document.getElementById("comment");
+    const commentText = commentInput.value;
+    if (commentText.trim() !== "") {
+        fetch("/post-comment", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ comment: commentText })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // コメントが投稿された場合の処理
+                const commentItem = document.createElement("li");
+                commentItem.textContent = commentText;
+                commentsList.appendChild(commentItem);
+                commentInput.value = "";
+            }
+        });
+    }
+});
+
+    </script>
+</body>
+</html>
