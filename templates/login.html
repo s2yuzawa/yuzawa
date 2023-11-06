@@ -1,30 +1,40 @@
 <!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ログイン</title>
-  </head>
-  <body>
-    {% with messages = get_flashed_messages() %}
-      {% if messages %}
-        {% for message in messages %}
-          <p>{{ message }}</p>
-        {% endfor %}
-      {% endif %}
-    {% endwith %}
-      <h1>ようこそ！</h1>
-      <form action="/login" method="post">
-      <div>
-        <label for="user">ユーザー名</label>
-        <input type="text" id="user" name="username">
-      </div>
-      <div>
-        <label for="pass">パスワード</label>
-        <input type="password" id="pass" name="password">
-      </div>
-      <button type="submit">ログイン</button>
+<html>
+<head>
+    <title>アーセナルファンクラブ　ログインページ</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <form id="login-form" action="/login" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" required><br><br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required><br><br>
+        <input type="submit" value="Login">
     </form>
-  </body>
+    <p id="message"></p>
+    <script>
+        document.getElementById("login-form").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const data = { username, password };
+            fetch("/login", {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message === "success") {
+                    document.getElementById("message").textContent = "Login successful!";
+                } else {
+                    document.getElementById("message").textContent = "Login failed. Please check your username and password.";
+                }
+            });
+        });
+    </script>
+</body>
 </html>
-
