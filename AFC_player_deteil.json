@@ -1,0 +1,25 @@
+[
+{ "number":1,"name": "Aaron Ramsdale", "position": "GK","age": 25 , "match": 7 , "goal" : 0, "asist":0},
+{ "number":22,"name": "David Raya", "position": "GK","age": 28 , "match": 12 , "goal" : 0, "asist":0 },
+{ "number":2,"name": "William Saliba", "position": "CB","age": 22 , "match": 17 , "goal" : 1, "asist":1},
+{ "number":4,"name": "Ben White", "position": "RB","age": 26 , "match": 18 , "goal" : 1, "asist":0},
+{ "number":6,"name": "Gabriel Magalhaes", "position": "CB","age": 25 , "match": 17 , "goal" : 0, "asist":0},
+{ "number":12,"name": "Jurrien Timber", "position": "CB","age": 22 , "match": 2 , "goal" : 0, "asist":0},
+{ "number":35,"name": "Oleksandr Zinchenko", "position": "LB","age": 26 , "match": 16 , "goal" : 1, "asist":0},
+{ "number":15,"name": "Jakub Kiwior", "position": "CB","age": 23 , "match": 8 , "goal" : 0, "asist":0},
+{ "number":18,"name": "Takehiro Tomiyasu", "position": "CB","age": 25 , "match": 16 , "goal" : 1, "asist":0},
+{ "number":41,"name": "Declan Rice", "position": "CDM","age": 24 , "match": 18 , "goal" : 2, "asist":2},
+{ "number":8,"name": "Martin Odegaard", "position": "AMF","age": 24 , "match": 15 , "goal" : 5, "asist":1},
+{ "number":29,"name": "Kai Havertz", "position": "AMF","age": 24 , "match": 19 , "goal" : 1, "asist":1},
+{ "number":5,"name": "Thomas Partey", "position": "DMF","age": 30 , "match": 7 , "goal" : 0, "asist":0},
+{ "number":10,"name": "Emile Smith Rowe", "position": "AMF","age": 23 , "match": 8, "goal" : 0, "asist":1},
+{ "number":21,"name": "Fabio Vieira", "position": "AMF","age": 23 , "match": 13 , "goal" : 1, "asist":3},
+{ "number":20,"name": "Jorginho", "position": "CDM","age": 31 , "match": 14 , "goal" : 0, "asist":0},
+{ "number":7,"name": "Bukayo Saka", "position": "RWF","age": 22 , "match": 17 , "goal" : 6, "asist":8},
+{ "number":11,"name": "Gabriel Martinelli", "position": "LWF","age": 22 , "match": 14 , "goal" : 2, "asist":3},
+{ "number":9,"name": "Gabriel Jesus", "position": "CF","age": 26 , "match": 11 , "goal" : 4, "asist":1},
+{ "number":19,"name": "Leandro Trossard", "position": "LMF","age": 28 , "match": 14 , "goal" : 6, "asist":2},
+{ "number":14,"name": "Eddie Nketiah", "position": "CF","age": 24 , "match": 17 , "goal" : 5, "asist":1},
+{ "number":24,"name": "Reiss Nelson", "position": "RWF","age": 23 , "match": 10 , "goal" : 1, "asist":1}
+]
+

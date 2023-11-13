@@ -10,6 +10,9 @@ sample_password = "password"
 def login_page():
     return render_template('login.html')
 
+#@app.route("/make", methods=["GET", "POST"])
+#def make():
+
 @app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
