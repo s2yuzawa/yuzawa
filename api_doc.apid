@@ -1,0 +1,115 @@
+openapi: 3.0.0
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/SHOMAYUZAWA3Q/arsenal_player_info/1.0.0
+info:
+  description: TestAPI
+  version: "1.0.0"
+  title: Arsenal SoccerPlayer Physical information API
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+paths:
+  /users:
+    get:
+      tags:
+        - developers
+      summary: searches inventory
+      operationId: searchInventory
+      description: |
+        By passing in the appropriate options, you can search for
+        available inventory in the system
+      parameters:
+        - in: query
+          name: searchString
+          description: pass an optional search string for looking up inventory
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: skip
+          description: number of records to skip for pagination
+          schema:
+            type: integer
+            format: int32
+            minimum: 0
+        - in: query
+          name: limit
+          description: maximum number of records to return
+          schema:
+            type: integer
+            format: int32
+            minimum: 0
+            maximum: 50
+      responses:
+        '200':
+          description: search results matching criteria
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InventoryItem'
+        '400':
+          description: bad input parameter
+    post:
+      tags:
+        - admins
+      summary: adds an inventory item
+      operationId: addInventory
+      description: Adds an item to the system
+      responses:
+        '201':
+          description: item created
+        '400':
+          description: 'invalid input, object invalid'
+        '409':
+          description: an existing item already exists
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InventoryItem'
+        description: Inventory item to add
+components:
+  schemas:
+    InventoryItem:
+      type: object
+      required:
+        - number
+        - name
+        - position
+        - age
+        - match
+        - goal
+        - asist
+      properties:
+        number:
+          type: integer
+          format: uuid
+          example: 22
+        name:
+          type: string
+          example: Takehiro Tomiyasu
+        position:
+          type: string
+          format: uuid
+          example: RB
+        age:
+          type: integer
+          format: uuid
+          example: 24
+        match: 
+          type: integer
+          format: uuid
+          example: 14
+        goal:
+          type: integer
+          format: uuid
+          example: 2
+        asist:
+          type: integer
+          format: uuid
+          example: 6
+          
