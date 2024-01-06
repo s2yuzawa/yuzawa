@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify, redirect, url_for
 
-app = Flask(__name)
+app = Flask(__name__)
 
 # サンプルのユーザ名とパスワード
 sample_username = "user"
