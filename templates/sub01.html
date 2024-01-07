@@ -1,50 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>試合結果</title>
+    <meta charset="UTF-8">
+    <title>Arsenal vs Liverpool</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='vote.js') }}"></script>
 </head>
 <body>
-    <h1>第０節 [クラブ名]戦</h1>
-    <h2>Latest Match Result</h2>
-    <p>Date: 2023-00-00</p>
-    <p> アーセナル 2 - 1 [クラブ名]</p>
-    <h2>コメント</h2>
-    <ul id="comments">
-        <!-- コメント表示 -->
+    <a href="{{ url_for('index') }}">Back to Home</a>
+    <h1>Arsenal vs Liverpool</h1>
+    <h2>Match Result</h2>
+    <p>Score: Arsenal 1 - 0 Liverpool</p>
+
+    <!-- 出場選手一覧の表示 -->
+    <h2>Arsenal Players</h2>
+    <ul>
+        {% for player in players %}
+        <li>{{ player.name }}</li>
+        {% endfor %}
     </ul>
-    <h3>コメントを書く</h3>
-    <form id="comment-form">
-        <label for="comment">Comment:</label>
-        <input type="text" name="comment" id="comment" required>
-        <button type="submit">Submit</button>
+
+    <!-- 投票機能 -->
+    <h2>Vote for MVP</h2>
+    <form id="mvp-vote-form">
+        <select name="player_id">
+            {% for player in players %}
+            <option value="{{ player.id }}">{{ player.name }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Vote</button>
     </form>
 
-    <script>
-      commentForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-    const commentInput = document.getElementById("comment");
-    const commentText = commentInput.value;
-    if (commentText.trim() !== "") {
-        fetch("/post-comment", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ comment: commentText })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                // コメントが投稿された場合の処理
-                const commentItem = document.createElement("li");
-                commentItem.textContent = commentText;
-                commentsList.appendChild(commentItem);
-                commentInput.value = "";
-            }
-        });
-    }
-});
-
-    </script>
+    <!-- Ajaxによる投票結果の表示 -->
+    <div id="vote-results"></div>
 </body>
 </html>

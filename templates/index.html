@@ -1,109 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="Content-Style-Type" content="text/css">
-<title class="title">Arsenal</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet"  href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Arsenal Fan Club</title>
 </head>
-
 <body>
-    <div id="container">
-        <header>
-            <h1><a href="index.html">Arsenal</a></h1>
-            <nav id="top_nav">
-                <a href="index.html">TOP</a>
-                
-                <a href="member.html">選手/スタッフ</a>
-            </nav>
-        </header>
-    </div>
+    <header>
+        <h1>Welcome to the Arsenal Fan Club, {{ username }}</h1>
+        <nav>
+            <a href="{{ url_for('logout') }}">Logout</a>
+            <a href="{{ url_for('arsenal_info') }}">Arsenal Information</a>
+        </nav>
+    </header>
 
-    <article id="main_contents">
-    <h1>NEWS</h1>
-    <h2>NEWS TITLE</h2>
+    <img src="img/0001.pg" alt="Arsenal Football Club">
 
-    <tr>
-        <a href="img/0001.webp" data-lightbox="xxxf" data-title="NEWS1" id="sub_image"></a>
-            <th colspam="2"><img alt="0001.webp" src="img/0001.webp" decoding="async" width="600" heigth="1000" srcset="img/0001.webp" data-file-width="3264" data-file-heigth="2448"></a>
-            </th>
-    </tr>
-    </br>
-
-    <tr>
-        <td>
-            NEWS内容
-        </td>
-    </tr>
-    <h2>NEWS2</h2>
-    <tr>
-        <td>
-            NEWS2内容
-        </td>
-    </tr>
-     </br>
-
-</td>
-    <table>
-        <caption>試合日程</caption>
-        <tr>
-          <th>日程</th>
-          <th>H or A</th>
-          <th>スコア</th>
-          <th>対戦相手</th>
+    <section class="match-results">
+        <h2>Match Results</h2>
+        <h3>Latest Match</h3>
+        <div>FA Cup vs Liverpool - 0-2</div>
+        <a href="{{ url_for('sub01') }}">View Details of Latest Match</a>
+        <table>
+          <caption>23/24 Premier League</caption>
+          <tr>
+              <th>Date</th>
+              <th>Opponent</th>
+              <th>Score</th>
+          </tr>
+          <tr>
+              <td>2023-12-31</td>
+              <td>Fulham</td>
+              <td>2-2</td>
+          </tr>
+          <tr>
+            <td>2023-12-29</td>
+            <td>West Ham</td>
+            <td>0-2</td>
+          </tr>
+          <tr>
+            <td>2023-12-24</td>
+            <td>Livapool</td>
+            <td>1-1</td>
+          </tr>
+          <tr>
+            <td>2023-12-17</td>
+            <td>Brighon</td>
+            <td>2-0</td>
         </tr>
-        
-        <tr>
-          <td><a href="sub01.html">08月 12日</a></td>
-          <td>H</td>
-          <td><font color=”red”>2-1</font></td>
-          <td>ノッティンガムフォレスト</td>
-        </tr>
-        <tr>
-            <td><a href="sub02.html">08月 22日</a></td>
-            <td>A</td>
-            <td><font color=”red”>0-1</font></td>
-            <td>クリスタル・パレス</td>
-          </tr>
-          <tr>
-            <td><a href="sub03.html">08月 26日</a></td>
-            <td>H</td>
-            <td>2-2</td>
-            <td>フラム</td>
-          </tr>
-          <tr>
-            <td><a href="sub04.html">09月 04日</a></td>
-            <td>H</td>
-            <td><font color=”red”>3-1</font></td>
-            <td>マンチェスター・U</td>
-          </tr>
-          <tr>
-            <td><a href="sub05.html">09月 18日</a></td>
-            <td>A</td>
-            <td><font color=”red”>0-1</font></td>
-            <td>エヴァートン</td>
-          </tr>
-          <tr>
-            <td><a href="sub06.html">09月 24日</a></td>
-            <td>H</td>
-            <td>2-2</td>
-            <td>トッテナム</td>
-          </tr>
-          <tr>
-            <td><a href="sub07.html">09月 30日</a></td>
-            <td>A</td>
-            <td><font color=”red”>0-4</font></td>
-            <td>ボーンマス</td>
-          </tr>
-          <tr>
-            <td><a href="sub06.html">10月 09日</a></td>
-            <td>H</td>
-            <td><font color=”red”>1-0</font></td>
-            <td>マンチェスター・C</td>
-          </tr>
-
-      </table>
-          
-    </article>
+            <!-- 他の試合結果も同様に追加 -->
+        </table>
+        <table>
+        <caption>UEFA Champions League</caption>
+            <tr>
+                <th>Date</th>
+                <th>Opponent</th>
+                <th>Score</th>
+            </tr>
+            <tr>
+                <td>2023-12-13</td>
+                <td>PSV</td>
+                <td>1-1</td>
+            </tr>
+            <tr>
+              <td>2023-11-23</td>
+              <td>Lens</td>
+              <td>6-0</td>
+            </tr>
+            <tr>
+              <td>2023-11-09</td>
+              <td>Sevilla</td>
+              <td>2-0</td>
+            </tr>
+        </table>
+    </section>
 </body>
-
 </html>
