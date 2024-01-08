@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify, redirect, url_for
 
-app = Flask(__name)
+app = Flask(__name__)
 
 # サンプルのユーザ名とパスワード
 sample_username = "user"
@@ -9,6 +9,9 @@ sample_password = "password"
 @app.route('/')
 def login_page():
     return render_template('login.html')
+
+#@app.route("/make", methods=["GET", "POST"])
+#def make():
 
 @app.route('/login', methods=['POST'])
 def login():
