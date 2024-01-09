@@ -7,15 +7,26 @@
 </head>
 <body>
     <header>
+      <div class="logo-title-container">
+            <!-- ロゴ画像 -->
+            <img src="{{ url_for('static', filename='img/0001.png') }}" alt="Arsenal" class="logo">
+            
         <h1>Welcome to the Arsenal Fan Club, {{ username }}</h1>
+    <!-- ナビゲーションバー -->
         <nav>
-            <a href="{{ url_for('logout') }}">Logout</a>
-            <a href="{{ url_for('arsenal_info') }}">Arsenal Information</a>
+          <u1 class="nav-links">
+            <l1><a href="{{ url_for('logout') }}">Logout</a></l1>
+            <l1><a href="{{ url_for('arsenal_info') }}">Arsenal Information</a></l1>
+          </u1>
         </nav>
     </header>
 
-    <img src="img/0001.pg" alt="Arsenal Football Club">
-
+    <section>
+      <h2>Next Match 01/30 21:30</h2>
+      <h3>vs Crystal Palace (Emirates Sta.)</h3>
+      <a href="{{ url_for('sub02') }}">Match Commentary</a>
+    </section>
+        
     <section class="match-results">
         <h2>Match Results</h2>
         <h3>Latest Match</h3>
@@ -48,7 +59,6 @@
             <td>Brighon</td>
             <td>2-0</td>
         </tr>
-            <!-- 他の試合結果も同様に追加 -->
         </table>
         <table>
         <caption>UEFA Champions League</caption>

@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet"  href="{{ url_for('static', filename='css/info.css') }}">
     <title>Arsenal Information</title>
+    <a href="{{ url_for('index') }}">Back to Home</a>
 </head>
 <body>
+    <div class="container">
     <h1>Arsenal FC Information</h1>
     <img src="{{ data['crest'] }}" alt="Crest">
     <p><strong>Name:</strong> {{ data['name'] }}</p>
@@ -32,7 +35,7 @@
         <li>{{ competition['name'] }} ({{ competition['code'] }})</li>
         {% endfor %}
     </ul>
-
+    </div>
     <!-- その他の情報を表示 -->
 </body>
 </html>

@@ -151,6 +151,28 @@ def arsenal_info():
     return render_template('info.html', data=data)
 
 
+@app.route('/sub02')
+def sub02():
+    # sub02.htmlをレンダリングする
+    return render_template('sub02.html')
+
+#Ajaxの機能
+# コメントリスト
+commentaries = []
+
+@app.route('/submit-commentary', methods=['POST'])
+def submit_commentary():
+    data = request.get_json()
+    commentary = data.get('commentary')
+    # コメントをリストに追加
+    commentaries.insert(0, commentary)
+    return jsonify({'commentary': commentary})
+
+@app.route('/get-commentaries', methods=['GET'])
+def get_commentaries():
+    # コメントリストを返す
+    return jsonify({'commentaries': commentaries})
+
 
 # アプリケーションの実行
 if __name__ == '__main__':

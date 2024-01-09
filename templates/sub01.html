@@ -3,22 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Arsenal vs Liverpool</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/info.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{{ url_for('static', filename='vote.js') }}"></script>
 </head>
 <body>
     <a href="{{ url_for('index') }}">Back to Home</a>
-    <h1>Arsenal vs Liverpool</h1>
+    <h1>Arsenal vs Liverpool
+     </br>
+        FA Cup 3rd round
+    </h1>
     <h2>Match Result</h2>
     <p>Score: Arsenal 1 - 0 Liverpool</p>
+    <p>Ball possetion: 54% - 46%</p>
+    <p>Total shots(target): 18(5) - 12(3)</p>
 
-    <!-- 出場選手一覧の表示 -->
-    <h2>Arsenal Players</h2>
-    <ul>
-        {% for player in players %}
-        <li>{{ player.name }}</li>
-        {% endfor %}
-    </ul>
+    <h3>Standings</h3>
+    <tr>
+        <th>
+            <img src="{{ url_for('static', filename='img/startmem.jpg') }}" alt="vs-LIV" class="st">
+        </th>
+    </tr>
 
     <!-- 投票機能 -->
     <h2>Vote for MVP</h2>
@@ -32,6 +37,7 @@
     </form>
 
     <!-- Ajaxによる投票結果の表示 -->
-    <div id="vote-results"></div>
+    <div id="vote-results">
+    </div>
 </body>
 </html>

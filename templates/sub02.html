@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Match Commentary</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sub02.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/commentary.js') }}"></script>
+</head>
+<a href="{{ url_for('index') }}">Back to Home</a>
+<body>
+    <h1>Match Commentary</h1>
+    <h2>Next Match [01/20 21:30 kick off]
+     </br>
+    vs Crystal Palace (Emirates Sta.)
+    </h2>
+    <textarea id="commentary-input" placeholder="Enter your commentary..."></textarea>
+    <button id="submit-commentary">Submit</button>
+
+    <div id="commentary-list">
+        <!-- コメントリストがここに表示される -->
+    </div>
+
+    <script>
+        // コメントを送信する処理
+        $('#submit-commentary').on('click', function() {
+            var commentary = $('#commentary-input').val();
+            $.ajax({
+                url: '/submit-commentary',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ commentary: commentary }),
+                success: function(response) {
+                    // コメントリストを更新
+                    $('#commentary-list').prepend('<div>' + response.commentary + '</div>');
+                    // 入力フィールドをクリア
+                    $('#commentary-input').val('');
+                }
+            });
+        });
+
+        // コメントリストを定期的に更新する処理
+        function updateCommentaryList() {
+            $.ajax({
+                url: '/get-commentaries',
+                type: 'GET',
+                success: function(response) {
+                    // コメントリストを更新
+                    var commentaryList = response.commentaries.map(function(commentary) {
+                        return '<div>' + commentary + '</div>';
+                    }).join('');
+                    $('#commentary-list').html(commentaryList);
+                }
+            });
+        }
+
+        // ページ読み込み後にコメントリストを更新
+        $(document).ready(function() {
+            updateCommentaryList();
+            // 一定間隔でコメントリストを更新
+            setInterval(updateCommentaryList, 5000); // 5秒ごとに更新
+        });
+    </script>
+</body>
+</html>
