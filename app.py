@@ -5,7 +5,6 @@ from datetime import datetime
 import urllib.request
 import json
 
-
 # Flaskアプリケーションの初期化
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
@@ -19,8 +18,9 @@ def get_db_connection():
     conn.row_factory = sqlite3.Row
     return conn
 
+
 # ログインページ
-@app.route('/login/', methods=['GET', 'POST'])
+@app.route('/login', methods=['POST'])
 def login():
     msg = ''
     if request.method == 'POST':
