@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet"  href="{{ url_for('static', filename='css/info.css') }}">
+    <title>Arsenal Information</title>
+    <a href="{{ url_for('index') }}">Back to Home</a>
+</head>
+<body>
+    <div class="container">
+    <h1>Arsenal FC Information</h1>
+    <img src="{{ data['crest'] }}" alt="Crest">
+    <p><strong>Name:</strong> {{ data['name'] }}</p>
+    <p><strong>Founded:</strong> {{ data['founded'] }}</p>
+    <p><strong>Club Colors:</strong> {{ data['clubColors'] }}</p>
+    <p><strong>Venue:</strong> {{ data['venue'] }}</p>
+    <p><strong>Address:</strong> {{ data['address'] }}</p>
+    <p><strong>Website:</strong> <a href="{{ data['website'] }}">{{ data['website'] }}</a></p>
+
+    <h2>Current Coach</h2>
+    <p><strong>Name:</strong> {{ data['coach']['name'] }}</p>
+    <p><strong>Date of Birth:</strong> {{ data['coach']['dateOfBirth'] }}</p>
+    <p><strong>Nationality:</strong> {{ data['coach']['nationality'] }}</p>
+
+    <h2>Current Squad</h2>
+    <ul>
+        {% for player in data['squad'] %}
+        <li>{{ player['name'] }} - {{ player['position'] }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Running Competitions</h2>
+    <ul>
+        {% for competition in data['runningCompetitions'] %}
+        <li>{{ competition['name'] }} ({{ competition['code'] }})</li>
+        {% endfor %}
+    </ul>
+    </div>
+    <!-- その他の情報を表示 -->
+</body>
+</html>

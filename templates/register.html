@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet"  href="{{ url_for('static', filename='css/login.css') }}">
-    <title>Login</title>
+    <title>Register</title>
 </head>
 <body>
-    <h2>Login</h2>
-    <form action="/login/" method="post">
+    <h2>Register</h2>
+    <form action="/register/" method="post">
         <label for="username">Username:</label>
         <input type="text" name="username" id="username" required>
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required>
         <label for="password">Password:</label>
         <input type="password" name="password" id="password" required>
-        <input type="submit" value="Login">
+        <input type="submit" value="Register">
     </form>
-    <p>Don't have an account? <a href="/register/">Register Here</a></p>
+    <p><a href="/login/">Login Here</a></p>
 </body>
 </html>
